@@ -1,36 +1,8 @@
-import  chalk from "chalk";
-import  moment from 'moment'
+
 import fetch from "node-fetch";
 
 export default class TypeScriptDevTools {
 
-    /**
-     * Logger for the console
-     * @param {string} message Error Message
-     * @param {string} type Error Or Log 
-     * @returns void
-     */
-
-    logger(message: string, type: string = "log"): void {
-        const date = `${moment().format("DD-MM-YYYY hh:mm:ss")}`;
-
-        switch (type) {
-            case "log":
-                return console.log(
-                    `[${chalk.gray(date)}]: [${chalk.black.bgGreen(
-                        type.toUpperCase()
-                    )}] ${message}`
-                );
-            case "error":
-                return console.log(
-                    `[${chalk.gray(date)}]: [${chalk.black.bgRed(
-                        type.toUpperCase()
-                    )}] ${message}`
-                );
-            default:
-                throw new TypeError("Logger type must be either log or error!");
-        }
-    }
 
     /**
      * Chunks a single string into multiple multiple strings
@@ -87,6 +59,14 @@ export default class TypeScriptDevTools {
 
         return result;
     }
+
+
+    /**
+     * Simple function to perform GET Requests
+     * @param {string} url the link 
+     * @param {object} options node-fetch additional options
+     * @returns JSON
+     */
 
     async request(url: string, options: {} = {}): Promise<any> {
         try {
