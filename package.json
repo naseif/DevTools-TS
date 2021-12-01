@@ -1,0 +1,35 @@
+{
+  "name": "devtools-ts",
+  "version": "1.0.0",
+  "description": "A small library that contains my own dev functions that I might reuse",
+  "main": "dist/main.js",
+  "typings": "dist/main.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "build:check": "tsc --noEmit --incremental false",
+    "publish": "tsc --build --clean && tsc --build --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naseif/DevTools-TS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naseif/DevTools-TS/issues"
+  },
+  "homepage": "https://github.com/naseif/DevTools-TS#readme",
+  "devDependencies": {
+    "typescript": "^4.5.2"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "@types/node": "^16.11.11",
+    "chalk": "^4.1.2",
+    "moment": "^2.29.1",
+    "node-fetch": "^3.0.0-beta.10",
+    "prettier": "^2.5.0",
+    "typedoc-plugin-missing-exports": "^0.22.6"
+  }
+}
