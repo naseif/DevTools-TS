@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import chalk from "chalk";
 import moment from 'moment'
-const fetch = require("node-fetch");
 
 class Utils {
 
@@ -56,21 +55,5 @@ class Utils {
         )
     };
 
-    /**
- * Simple function to perform GET Requests
- * @param {string} url the link 
- * @param {object} options node-fetch additional options
- * @returns JSON
- */
-
-    async request(url: string, options: {} = {}): Promise<any> {
-        try {
-            const request = await fetch(url, options);
-            const responseToJson = await request.json();
-            return responseToJson;
-        } catch (err) {
-            throw err;
-        }
-    }
 }
 export { Utils }
