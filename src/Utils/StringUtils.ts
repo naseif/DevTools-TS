@@ -1,8 +1,4 @@
-
-import fetch from "node-fetch";
-
-export default class TypeScriptDevTools {
-
+class StringUtils {
 
     /**
      * Chunks a single string into multiple multiple strings
@@ -60,21 +56,5 @@ export default class TypeScriptDevTools {
         return result;
     }
 
-
-    /**
-     * Simple function to perform GET Requests
-     * @param {string} url the link 
-     * @param {object} options node-fetch additional options
-     * @returns JSON
-     */
-
-    async request(url: string, options: {} = {}): Promise<any> {
-        try {
-            const request = await fetch(url, options);
-            const responseToJson = await request.json();
-            return responseToJson;
-        } catch (err) {
-            throw err;
-        }
-    }
 }
+export { StringUtils }
