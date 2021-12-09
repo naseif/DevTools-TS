@@ -19,7 +19,7 @@ class VultrVSCode extends Helpers {
 
   /**
    * Initializes Vultr Client
-   * @param {vultrKey} string API KEY
+   * @param {vultrKey} string Vultr API KEY
    */
 
   constructor(vultrKey: string) {

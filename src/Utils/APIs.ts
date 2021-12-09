@@ -33,6 +33,7 @@ class APIs {
    */
 
   async getShowDetails(query: string, key: string): Promise<any> {
+    if (!key) throw new Error("A TMDB API Key is required!")
     try {
       await this.getShowID(query, key);
       const req = await fetch(
@@ -113,6 +114,7 @@ class APIs {
    */
 
   async getMovieDetails(query: string, key: string): Promise<{}> {
+    if (!key) throw new Error("A TMDB API Key is required!")
     try {
       await this.getMovieID(query, key);
       const req = await fetch(
