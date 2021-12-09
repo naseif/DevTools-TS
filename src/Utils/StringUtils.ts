@@ -1,60 +1,60 @@
 class StringUtils {
+  /**
+   * Chunks a single string into multiple multiple strings
+   * @param {string} str the string
+   * @param {number} size chunk by length
+   * @returns Array containing the chunked strings
+   */
 
-    /**
-     * Chunks a single string into multiple multiple strings
-     * @param {string} str the string
-     * @param {number} size chunk by length
-     * @returns Array containing the chunked strings
-     */
+  chunkSubString(str: string, size: number): string[] {
+    const numChunks = Math.ceil(str.length / size);
+    const chunks = new Array(numChunks);
 
-    chunkSubString(str: string, size: number): string[] {
-        const numChunks = Math.ceil(str.length / size);
-        const chunks = new Array(numChunks);
-
-        for (let i = 0, o = 0; i < numChunks; ++i, o += size) {
-            chunks[i] = str.substr(o, size);
-        }
-
-        return chunks;
+    for (let i = 0, o = 0; i < numChunks; ++i, o += size) {
+      chunks[i] = str.substr(o, size);
     }
 
-    /**
-     * A simple random password generator
-     * @param {number} length 
-     * @returns string
-     */
+    return chunks;
+  }
 
-    RandomPasswordGenerator(length: number): string {
-        const validCharacters =
-            "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890?!$";
-        const maximalLength = length;
-        let result = "";
+  /**
+   * A simple random password generator
+   * @param {number} length
+   * @returns string
+   */
 
-        for (let i = 0; i < maximalLength; i++) {
-            const randomNumber = Math.floor(Math.random() * validCharacters.length);
-            result += validCharacters[randomNumber];
-        }
+  RandomPasswordGenerator(length: number): string {
+    const validCharacters =
+      'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890?!$';
+    const maximalLength = length;
+    let result = '';
 
-        return result;
+    for (let i = 0; i < maximalLength; i++) {
+      const randomNumber = Math.floor(Math.random() * validCharacters.length);
+      result += validCharacters[randomNumber];
     }
 
+    return result;
+  }
 
-    /**
-     * Simple function that creates multiple random passwords
-     * @param {number} howMany number of passwords to generate
-     * @param {number} passwordlength length of the password
-     * @returns str[] of random passwords
-     */
+  /**
+   * Simple function that creates multiple random passwords
+   * @param {number} howMany number of passwords to generate
+   * @param {number} passwordlength length of the password
+   * @returns str[] of random passwords
+   */
 
-    GenerateABunchOfRandomPasswords(howMany: number, passwordlength: number): string[] {
-        let result = [];
+  GenerateABunchOfRandomPasswords(
+    howMany: number,
+    passwordlength: number
+  ): string[] {
+    let result = [];
 
-        for (let i = 0; i < howMany; i++) {
-            result.push(this.RandomPasswordGenerator(passwordlength));
-        }
-
-        return result;
+    for (let i = 0; i < howMany; i++) {
+      result.push(this.RandomPasswordGenerator(passwordlength));
     }
 
+    return result;
+  }
 }
-export { StringUtils }
+export { StringUtils };
