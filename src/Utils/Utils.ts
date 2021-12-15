@@ -31,6 +31,11 @@ class Utils {
     }
   }
 
+  /**
+   * Creates a connection to a mongodb Database using mongoose
+   * @param {string} mongourl
+   */
+
   connectToDataBase(mongourl: string): void {
     const dbOptions = {
       useNewUrlParser: true,
