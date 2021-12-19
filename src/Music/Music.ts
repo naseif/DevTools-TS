@@ -40,13 +40,6 @@ export class Music {
           return new Track(track);
         });
         break;
-      case 'playlist':
-        const playlist = await playlist_info(query);
-        if (!playlist) throw new Error('Playlist not found!');
-        tracks = playlist.videos.map((track: any) => {
-          return new Playlist(track);
-        });
-        break;
       case 'search':
         result = await search(query);
         if (!result) throw new Error('No Song was found for this query!');
