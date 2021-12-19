@@ -1,6 +1,6 @@
 {
   "name": "devtools-ts",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A small library that contains functions that I might need to re-use in the future written in TypeScript",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
