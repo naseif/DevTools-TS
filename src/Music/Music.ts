@@ -1,7 +1,6 @@
 import {
   yt_validate,
   search,
-  playlist_info,
   deezer,
   spotify,
   sp_validate,

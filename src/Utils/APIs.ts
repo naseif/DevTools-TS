@@ -1,10 +1,15 @@
-const fetch = require('node-fetch');
+import fetch, { RequestInit } from 'node-fetch';
 const jikanjs = require('jikanjs');
 jikanjs.settings.setBaseURL('https://api.jikan.moe/v3', 3);
 
 class APIs {
   protected ShowID: string | undefined;
   protected MovieID: string | undefined;
+  public TMDBKey: string;
+
+  constructor(TMDBKey: string) {
+    this.TMDBKey = TMDBKey;
+  }
 
   /**
    * Gets the Show ID from TheMovieDB
@@ -13,10 +18,10 @@ class APIs {
    * @returns {string} the Show ID
    */
 
-  private async getShowID(query: string, key: string): Promise<any> {
+  private async getShowID(query: string): Promise<any> {
     try {
       const req = await fetch(
-        `https://api.themoviedb.org/3/search/tv?api_key=${key}&language=en-US&query=${query}`
+        `https://api.themoviedb.org/3/search/tv?api_key=${this.TMDBKey}&language=en-US&query=${query}`
       );
       const res: any = await req.json();
       return (this.ShowID = res.results[0].id);
@@ -35,9 +40,9 @@ class APIs {
   async getShowDetails(query: string, key: string): Promise<any> {
     if (!key) throw new Error('A TMDB API Key is required!');
     try {
-      await this.getShowID(query, key);
+      await this.getShowID(query);
       const req = await fetch(
-        `https://api.themoviedb.org/3/tv/${this.ShowID}?api_key=${key}&language=en-US`
+        `https://api.themoviedb.org/3/tv/${this.ShowID}?api_key=${this.TMDBKey}&language=en-US`
       );
       const res = await req.json();
       return res;
@@ -90,10 +95,10 @@ class APIs {
    * @returns {string} The Movie ID
    */
 
-  private async getMovieID(query: string, key: string): Promise<string> {
+  private async getMovieID(query: string): Promise<string> {
     try {
       const req = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${query}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${this.TMDBKey}&language=en-US&query=${query}`
       );
       const res: any = await req.json();
       if (!res.total_results)
@@ -116,9 +121,9 @@ class APIs {
   async getMovieDetails(query: string, key: string): Promise<{}> {
     if (!key) throw new Error('A TMDB API Key is required!');
     try {
-      await this.getMovieID(query, key);
+      await this.getMovieID(query);
       const req = await fetch(
-        `https://api.themoviedb.org/3/movie/${this.MovieID}?api_key=${key}&language=en-US`
+        `https://api.themoviedb.org/3/movie/${this.MovieID}?api_key=${this.TMDBKey}&language=en-US`
       );
       const res: any = await req.json();
       return res;
@@ -134,7 +139,7 @@ class APIs {
    * @returns JSON
    */
 
-  async request(url: string, options: {} = {}): Promise<any> {
+  async request(url: string, options: RequestInit = {}): Promise<any> {
     try {
       const request = await fetch(url, options);
       const responseToJson = await request.json();
